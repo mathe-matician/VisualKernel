@@ -20,9 +20,9 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_push1_clicked();
+    void on_loadimage_clicked();
 
-    void on_push2_clicked();
+    void on_flipimage_clicked();
 
 private:
     cv::Mat m_image;

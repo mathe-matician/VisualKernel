@@ -14,7 +14,7 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_push1_clicked()
+void MainWindow::on_loadimage_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
           tr("Open Image"), ".",
@@ -25,7 +25,7 @@ void MainWindow::on_push1_clicked()
     cv::imshow("Original Image", m_image);
 }
 
-void MainWindow::on_push2_clicked()
+void MainWindow::on_flipimage_clicked()
 {
     cv::flip(m_image, m_image,1);
     cv::namedWindow("Output Image");

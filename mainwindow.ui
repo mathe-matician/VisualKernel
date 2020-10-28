@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="push1">
+   <widget class="QPushButton" name="loadimage">
     <property name="geometry">
      <rect>
       <x>60</x>
@@ -24,10 +24,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>Push 1</string>
+     <string>Load Image</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="push2">
+   <widget class="QPushButton" name="flipimage">
     <property name="geometry">
      <rect>
       <x>60</x>
@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Push2</string>
+     <string>Flip Image</string>
     </property>
    </widget>
   </widget>
