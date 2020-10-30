@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPixmap>
 #include <QFileDialog>
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
@@ -22,7 +23,9 @@ public:
 private slots:
     void on_loadimage_clicked();
 
-    void on_flipimage_clicked();
+    void on_applykernel_clicked();
+
+    //void on_label_linkActivated(const QString &link);
 
 private:
     cv::Mat m_image;
