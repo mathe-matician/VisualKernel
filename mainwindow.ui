@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>302</width>
-    <height>291</height>
+    <width>472</width>
+    <height>315</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="loadimage">
@@ -23,8 +26,17 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
     <property name="text">
-     <string>Load Image</string>
+     <string>Load Media</string>
     </property>
    </widget>
    <widget class="QPushButton" name="applykernel">
@@ -35,6 +47,12 @@
       <width>101</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Apply Kernel</string>
@@ -146,7 +164,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>50</x>
       <y>160</y>
       <width>81</width>
       <height>16</height>
@@ -156,18 +174,115 @@
      <string>Kernel Name</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>230</y>
+      <width>101</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Test Message Box</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>302</width>
-     <height>26</height>
+     <width>472</width>
+     <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuKernel">
+    <property name="title">
+     <string>Kernel</string>
+    </property>
+    <widget class="QMenu" name="menuLoad_Kernel">
+     <property name="title">
+      <string>Load Kernel</string>
+     </property>
+     <addaction name="actionIdentity"/>
+     <addaction name="actionSharpen"/>
+     <addaction name="actionEdge_Detect_1"/>
+     <addaction name="actionEdge_Detect_2"/>
+     <addaction name="actionEdge_Detect_3"/>
+     <addaction name="actionBox_Blur"/>
+     <addaction name="actionGaussian_Blur_3x3"/>
+     <addaction name="actionGaussian_Blur_5x5"/>
+    </widget>
+    <addaction name="actionSave_Kernel"/>
+    <addaction name="menuLoad_Kernel"/>
+    <addaction name="action3x3"/>
+    <addaction name="action5x5"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuKernel"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSave_Kernel">
+   <property name="text">
+    <string>Save Kernel</string>
+   </property>
+  </action>
+  <action name="action3x3">
+   <property name="text">
+    <string>3x3</string>
+   </property>
+  </action>
+  <action name="action5x5">
+   <property name="text">
+    <string>5x5</string>
+   </property>
+  </action>
+  <action name="actionIdentity">
+   <property name="text">
+    <string>Identity</string>
+   </property>
+  </action>
+  <action name="actionSharpen">
+   <property name="text">
+    <string>Sharpen</string>
+   </property>
+  </action>
+  <action name="actionEdge_Detect_1">
+   <property name="text">
+    <string>Edge Detect 1</string>
+   </property>
+  </action>
+  <action name="actionEdge_Detect_2">
+   <property name="text">
+    <string>Edge Detect 2</string>
+   </property>
+  </action>
+  <action name="actionEdge_Detect_3">
+   <property name="text">
+    <string>Edge Detect 3</string>
+   </property>
+  </action>
+  <action name="actionBox_Blur">
+   <property name="text">
+    <string>Box Blur</string>
+   </property>
+  </action>
+  <action name="actionGaussian_Blur_3x3">
+   <property name="text">
+    <string>Gaussian Blur 3x3</string>
+   </property>
+  </action>
+  <action name="actionGaussian_Blur_5x5">
+   <property name="text">
+    <string>Gaussian Blur 5x5</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
