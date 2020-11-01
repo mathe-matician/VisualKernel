@@ -27,8 +27,19 @@ private slots:
 
     void on_applykernel_clicked();
 
-    void on_pushButton_clicked();
-    QVector<int> Kernel_Gather_Values();
+    void on_actionIdentity_triggered();
+
+    void on_actionSharpen_triggered();
+
+    void on_actionEdge_Detect_1_triggered();
+
+    void on_actionEdge_Detect_2_triggered();
+
+    void on_actionEdge_Detect_3_triggered();
+
+    void on_actionBox_Blur_triggered();
+
+    void on_actionGaussian_Blur_3x3_triggered();
 
 private:
     cv::Mat m_image;
@@ -36,5 +47,7 @@ private:
     void MainWindowStyleSheet();
     void SpinBoxInit();
     void KernelTypeCheck();
+    QVector<int> Kernel_Gather_Values();
+    void SetSpinBoxKernel(const QVector<int> a_kernel);
 };
 #endif // MAINWINDOW_H

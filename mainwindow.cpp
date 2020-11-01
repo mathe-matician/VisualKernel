@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     MainWindowStyleSheet();
     ui->setupUi(this);
     SpinBoxInit();
-    KernelTypeCheck();
+    //KernelTypeCheck();
 }
 
 MainWindow::~MainWindow()
@@ -66,9 +66,15 @@ void MainWindow::MainWindowStyleSheet()
 //set
 void MainWindow::SpinBoxInit()
 {
+    //ui->stackedWidget->findChildren<QSpinBox*>();
     for (auto i : findChildren<QSpinBox*>())
         i->setMinimum(-256);
 
+    ui->stackedWidget->setCurrentIndex(1);
+    //ui->stackedWidget->findChildren<QSpinBox*>();
+    for (auto i : findChildren<QSpinBox*>())
+        i->setMinimum(-256);
+    ui->stackedWidget->setCurrentIndex(0);
     //set start up kernel as Identity
     ui->spinBox4->setValue(1);
 }
@@ -81,6 +87,14 @@ QVector<int> MainWindow::Kernel_Gather_Values()
         l_spinboxvalues.push_back(i->value());
 
     return l_spinboxvalues;
+}
+
+void MainWindow::SetSpinBoxKernel(const QVector<int> a_kernel)
+{
+    int j = 0;
+    //TODO: fails
+    for (auto i : findChildren<QSpinBox*>())
+        i->setValue(a_kernel[j++]);
 }
 
 //gets all values in spinboxes
@@ -102,8 +116,38 @@ void MainWindow::KernelTypeCheck()
     ui->label_2->setText(l_returnString);
 }
 
-//test message box
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_actionIdentity_triggered()
 {
-    QMessageBox::about(this, "TITLE", "MOTHER FUCKER GET THE FUCK OUT OF HERE!");
+    SetSpinBoxKernel(VK_IDENTITY);
+}
+
+void MainWindow::on_actionSharpen_triggered()
+{
+    SetSpinBoxKernel(VK_SHARPEN);
+}
+
+void MainWindow::on_actionEdge_Detect_1_triggered()
+{
+    SetSpinBoxKernel(VK_EDGE_DETECT1);
+}
+
+void MainWindow::on_actionEdge_Detect_2_triggered()
+{
+    SetSpinBoxKernel(VK_EDGE_DETECT2);
+}
+
+void MainWindow::on_actionEdge_Detect_3_triggered()
+{
+    SetSpinBoxKernel(VK_EDGE_DETECT3);
+}
+
+
+void MainWindow::on_actionBox_Blur_triggered()
+{
+    SetSpinBoxKernel(VK_BOX_BLUR);
+}
+
+void MainWindow::on_actionGaussian_Blur_3x3_triggered()
+{
+    SetSpinBoxKernel(VK_GAUSSIAN_BLUR_3X3);
 }
