@@ -1,14 +1,40 @@
 #include "vars.hpp"
 #include <QVector>
 
-const QVector<int> VK_IDENTITY = {0, 0, 0, 0, 1, 0, 0, 0, 0};
-const QVector<int> VK_SHARPEN = {-1, -1, -1, -1, 5, -1, -1, -1, -1};
-const QVector<int> VK_EDGE_DETECT1 = {1, 0, -1, 0, 0, 0, -1, 0, 1};
-const QVector<int> VK_EDGE_DETECT2 = {0, -1, 0, -1, 4, -1, 0, -1, 0};
-const QVector<int> VK_EDGE_DETECT3 = {-1, -1, -1, -1, 8, -1, -1, -1, -1};
-const QVector<int> VK_BOX_BLUR = {1, 1, 1, 1, 1, 1, 1, 1, 1}; // 1/9
-const QVector<int> VK_GAUSSIAN_BLUR_3X3 = {1, 2, 1, 2, 4, 2, 1, 2, 1}; // 1/16
-const QVector<int> VK_GAUSSIAN_BLUR_5x5 = {1, 4, 6, 4, 1, 4, 16, 24, 16, 4, 6, 24, 36, 24, 6, 4, 16, 24, 16, 4, 1, 4, 6, 4, 1}; // 1/256
+const QVector<int> VK_IDENTITY = {0, 0, 0,
+                                  0, 1, 0,
+                                  0, 0, 0};
+
+const QVector<int> VK_SHARPEN = {-1, -1, -1,
+                                 -1, 5, -1,
+                                 -1, -1, -1};
+
+const QVector<int> VK_EDGE_DETECT1 = {1, 0, -1,
+                                      0, 0, 0,
+                                      -1, 0, 1};
+
+const QVector<int> VK_EDGE_DETECT2 = {0, -1, 0,
+                                      -1, 4, -1,
+                                      0, -1, 0};
+
+const QVector<int> VK_EDGE_DETECT3 = {-1, -1, -1,
+                                      -1, 8, -1,
+                                      -1, -1, -1};
+
+const QVector<int> VK_BOX_BLUR = {1/9, 1/9, 1/9,
+                                  1/9, 1/9, 1/9,
+                                  1/9, 1/9, 1/9};
+
+const QVector<int> VK_GAUSSIAN_BLUR_3X3 = {1/16, 2/16, 1/16,
+                                           2/16, 4/16, 2/16,
+                                           1/16, 2/16, 1/16};
+
+const QVector<int> VK_GAUSSIAN_BLUR_5x5 = {1/256, 4/256, 6/256, 4/256, 1/256,
+                                           4/256, 16/256, 24/256, 16/256, 4/256,
+                                           6/256, 24/256, 36/256, 24/256, 6/256,
+                                           4/256, 16/256, 24/256, 16/256, 4/256,
+                                           1/256, 4/256, 6/256, 4/256, 1/256};
+
 const QVector<QVector<int>> VK_KERNELS = {VK_IDENTITY, VK_SHARPEN, VK_EDGE_DETECT1, VK_EDGE_DETECT2, VK_EDGE_DETECT3, VK_BOX_BLUR, VK_GAUSSIAN_BLUR_3X3, VK_GAUSSIAN_BLUR_5x5};
 
 const QString Identity = "Identity";

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>551</width>
-    <height>446</height>
+    <width>544</width>
+    <height>352</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,6 +34,9 @@
     </property>
     <property name="mouseTracking">
      <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: red</string>
     </property>
     <property name="text">
      <string>Load Media</string>
@@ -94,7 +97,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QSpinBox" name="spinBox8">
@@ -447,7 +450,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>551</width>
+     <width>544</width>
      <height>21</height>
     </rect>
    </property>

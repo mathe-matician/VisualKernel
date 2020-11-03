@@ -41,13 +41,20 @@ private slots:
 
     void on_actionGaussian_Blur_3x3_triggered();
 
+    void on_action5x5_triggered();
+
+    void on_action3x3_triggered();
+
+    void on_actionGaussian_Blur_5x5_triggered();
+
 private:
     cv::Mat m_image;
     Ui::MainWindow *ui;
     void MainWindowStyleSheet();
+    //void WidgetStyleSheet();
     void SpinBoxInit();
     void KernelTypeCheck();
-    QVector<int> Kernel_Gather_Values();
+    QVector<int> Kernel_Gather_Values_3X3();
     void SetSpinBoxKernel(const QVector<int> a_kernel);
 };
 #endif // MAINWINDOW_H
