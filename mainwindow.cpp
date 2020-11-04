@@ -5,6 +5,7 @@
 #include <QSpinBox>
 #include <QVector>
 #include <algorithm>
+#include <QScreen>
 
 using namespace cv;
 
@@ -23,26 +24,43 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-//TODO:
-//have a max&min size for screen resize to fit picture
+//TODO: error handling for null/empty file
 void MainWindow::on_loadimage_clicked()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Image"), ".", tr("Image Files (*.png *.jpg *.jpeg *.bmp)"));
-
+    QString l_fileName = QFileDialog::getOpenFileName(this, tr("Open Image"), ".", tr("Image Files (*.png *.jpg *.jpeg *.bmp)"));
     //m_image = cv::imread(fileName.toStdString());
-
         //change opencv BGR to RGB
     //cv::cvtColor(m_image, m_image, COLOR_BGR2RGB);
 
-    //TODO: error handling for null/empty file
-     QPixmap pic(fileName);
-     ui->imgbox->setPixmap(pic);
-     ui->imgbox->resize(pic.size());
+    QRect l_screenGeometry = GetScreenSize();
+    int l_screenWidth = l_screenGeometry.width();
+    int l_screenHeight = l_screenGeometry.height();
 
-     MainWindow::resize(pic.width() + 292, pic.height() + 10);
+    QPixmap l_media(l_fileName);
+    int l_mediaWidth = l_media.width();
+    int l_mediaHeight = l_media.height();
 
-        //cv::namedWindow("Original Image");
-        //cv::imshow("Original Image", m_image);
+    if ((l_mediaWidth > l_screenWidth) || (l_mediaHeight > l_screenHeight))
+    {
+        //change size variables to be used in scaling of image
+        l_mediaWidth = l_screenWidth - 292;
+        l_mediaHeight = l_screenHeight - 30;
+\
+        //if this is a huge image, does it need to be copied to show a smaller version of it while the kernel goes over the actual image?
+        //scale everything down
+        l_media.scaled(l_mediaWidth, l_mediaHeight);
+        ui->imgbox->resize(l_screenWidth, l_screenHeight);
+        MainWindow::resize(l_screenWidth, l_screenHeight);
+        ui->imgbox->setPixmap(l_media);
+    } else
+    {
+        ui->imgbox->resize(l_media.size());
+        MainWindow::resize(l_media.width() + 292, l_media.height() + 30);
+        ui->imgbox->setPixmap(l_media);
+    }
+
+    //cv::namedWindow("Original Image");
+    //cv::imshow("Original Image", m_image);
 }
 
 void MainWindow::on_applykernel_clicked()
@@ -81,12 +99,13 @@ void MainWindow::SpinBoxInit()
     ui->spinBox4->setValue(1);
 }
 
-//TODO:
-//add 3x3 or 5x5
 //get all values in spinboxes in the UI, store in QVector, return QVector.
 QVector<int> MainWindow::Kernel_Gather_Values_3X3()
 {
-    //iterative approach won't work with ui->stackedWidget->currentWidget()->findChildren<QSpinBox*>()??
+    //iterative approach won't work with:
+    //ui->stackedWidget->currentWidget()->findChildren<QSpinBox*>()??
+    //gathers and sets wrong values
+
     QVector<int> l_spinboxvalues;
     l_spinboxvalues.push_back(ui->spinBox0->value());
     l_spinboxvalues.push_back(ui->spinBox1->value());
@@ -127,6 +146,15 @@ void MainWindow::SetSpinBoxKernel(const QVector<int> a_kernel)
     ui->spinBox6->setValue(a_kernel[6]);
     ui->spinBox7->setValue(a_kernel[7]);
     ui->spinBox8->setValue(a_kernel[8]);
+}
+
+QRect MainWindow::GetScreenSize()
+{
+    //get user's screen size scalability
+    QList<QScreen*> l_totalScreensNumber = QApplication::screens();
+    QScreen* l_firstscreen = l_totalScreensNumber.first();
+    QRect l_screenGeometry = l_firstscreen->geometry();
+    return l_screenGeometry;
 }
 
 //gets all values in spinboxes

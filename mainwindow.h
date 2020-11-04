@@ -56,5 +56,6 @@ private:
     void KernelTypeCheck();
     QVector<int> Kernel_Gather_Values_3X3();
     void SetSpinBoxKernel(const QVector<int> a_kernel);
+    QRect GetScreenSize();
 };
 #endif // MAINWINDOW_H

@@ -1,5 +1,7 @@
 #include "vars.hpp"
 #include <QVector>
+#include <QSize>
+#include <QApplication>
 
 const QVector<int> VK_IDENTITY = {0, 0, 0,
                                   0, 1, 0,
